@@ -21,24 +21,22 @@ from django.urls import path
 from task import views
 
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('', views.sigin, name='sigin'),
-#     path('home/', views.home, name='home'),
-#     path('sigup/', views.sigup, name='sigup'),
-#     path('sair/', views.sair, name='sair'),
-#     path('tasks/', views.tasks, name='tasks'),
-#     path('sigin/', views.sigin, name='sigin'),
-# ]
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.sigin, name='sigin'),
     path('', views.tasks, name='task'),
-    path('sigup/', views.sigup, name='sigup'),
+    # path('', views.sigin, name='sigin'),
+    path('admin/', admin.site.urls),
     path('sigin/', views.sigin, name='sigin'),
+    path('task/', views.tasks, name='task'), 
+    path('home/', views.tasks, name='home'),
+    path('sigup/', views.sigup, name='sigup'),
     path('sair/', views.sair, name='sair'),
     path('tasks/', views.tasks, name='tasks'),
-    path('vender/', views.venda, name='vendas'),
-     path('publicar-item/', views.publicar_item_venda, name='publicar-item'),
+    path('vender/', views.venda, name='venda'),
+    path('publicar-item/', views.publicar_item_venda, name='publicar-item'),
+    path('consulta-itens-vendas/', views.tasks, name='consulta_itensVendas'),
 
 ]
+

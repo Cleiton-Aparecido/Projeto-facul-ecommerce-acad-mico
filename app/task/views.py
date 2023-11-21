@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
@@ -74,16 +75,26 @@ def sigin(request):
 @login_required   
 def sair(request):
     logout (request)
-    return redirect('home')
+    return redirect('tasks')
 
-def tasks(request):
-    return render(request,'home/home.html')
+def tasks(request): 
+
+    consultas = {
+        'Consulta_vendas': Vendas.objects.select_related('item').all()
+    }
+
+    print(consultas)
+    return render(request, 'home/home.html', consultas)
+
+    # consulta_itensVendas(request)
+
+
+    # return render(request,'home/home.html')
 
 
 @login_required
 def venda(request):
-    # return render(request,'vendas/index.html')
-    return render(request,'home/home.html')
+    return render(request,'vendas/index.html')
 
 
 @login_required
@@ -112,7 +123,7 @@ def publicar_item_venda(request):
         novo_item.save()
 
         # Criar um novo objeto Venda e vincular ao usuário e ao item recém-criado
-        nova_venda = Vendas(quantidade=0, usuario=usuario, item=novo_item)
+        nova_venda = Vendas(quantidade=0, User=usuario, item=novo_item)
         nova_venda.save()
 
         # Redirecionar para a página desejada após a publicação bem-sucedida
@@ -121,4 +132,6 @@ def publicar_item_venda(request):
 
     # Se o método não for POST, renderizar a página inicial
     return render(request, 'home/home.html')
+
+
 

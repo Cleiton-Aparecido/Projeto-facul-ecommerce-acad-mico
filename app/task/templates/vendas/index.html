@@ -1,3 +1,7 @@
+{% extends 'menu.html' %}
+
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -109,8 +113,10 @@
 </head>
 <body>
 
-    
-    {% include '../cabecalho/index.html' %}
+
+
+
+
   
    
     <form action="/publicar-item/" method="POST">
@@ -127,7 +133,7 @@
         <input type="text" id="valor" name="valor" required>
 
         <label for="quantidade">Quantidade:</label>
-        <input type="number" id="quantidade" name="quantidade" required>
+        <input type="text" id="quantidade" name="quantidade" required>
 
         <button type="submit">Publicar</button>
     </form>
@@ -143,3 +149,5 @@
 
 </body>
 </html>
+
+{% endblock %}

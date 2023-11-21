@@ -89,23 +89,18 @@
         
  
     {% include 'menu.html' %}
+    <!-- <a href="{% url 'consulta_itensVendas' %}">Consultar Itens de Vendas</a> -->
     <section>
+        {% for venda in Consulta_vendas %}
         <div class="product">
-            <h2>Produto 1</h2>
-            <p>Descrição do Produto 1.</p>
-            <p>R$ 50,00</p>
+            <h2>{{ venda.item.nome }}</h2>
+            <p>{{ venda.item.descricao }}</p>
+            <p>Quantidade: {{ venda.item.quantidade }}</p>
+            <p>Preço: R$ {{ venda.item.valor }}</p>
             <button>Adicionar ao Carrinho</button>
         </div>
-
-        <!-- <div class="product">
-            <h2>Produto 2</h2>
-            <p>Descrição do Produto 2.</p>
-            <p>R$ 65,00</p>
-            <button>Adicionar ao Carrinho</button>
-        </div>  -->
-
+    {% endfor %}
     </section>
-
     <footer>
         <p>&copy; 2023 ecommerceacademico Online. <!--Todos os direitos reservados. --></p>
     </footer>
